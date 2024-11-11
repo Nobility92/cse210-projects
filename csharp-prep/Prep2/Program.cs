@@ -32,9 +32,12 @@ class Program
             //Console.WriteLine("Your grade is D");
         }
         else
-        letter = 'F';
+        {
+            letter = 'F';
          //Console.WriteLine("You Failed");
          Console.WriteLine($"Your grade is {letter}");
+        }
+        
 
          if (grade >= 70)
         {
