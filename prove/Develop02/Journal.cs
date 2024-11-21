@@ -15,16 +15,15 @@ public class Journal
         if(_entries.Count == 0)
         {
             Console.WriteLine("Your Journal is Empty");
+            return;
         }
-        else
-        {
             Console.WriteLine("Your Journal Entries");
             foreach (Entry entry in _entries)
             {
                 entry.Display();
             }
         }
-    }
+    
     public void SaveToFile(string file)
     {
         using (StreamWriter outputFile = new StreamWriter(file))
