@@ -40,6 +40,23 @@ public class Journal
 
     public void LoadFromFile(string file)
     {
-        
+        if (File.Exists(file))
+        {
+             using (StreamReader reader = new StreamReader(file)){
+                string line;
+                while ((line = reader.ReadLine()) != null){
+                    _entries.Add(Entry.FromFileString(line));
+                }
+                Console.WriteLine($"You have loaded {file}.");
+            }
+        } else {
+            Console.WriteLine("File not found");
+        }
+        }
+
+    public void DeleteAll()
+    {
+            _entries.Clear();
+            Console.WriteLine("Entry Deleted");
+        }
     }
-}

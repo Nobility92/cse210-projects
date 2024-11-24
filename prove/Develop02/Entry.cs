@@ -18,4 +18,9 @@ public class Entry
     public string ToFile(){
         return $"{_date}~|~{_promptText}~|~{_entryText}";
     }
+
+    public static Entry FromFileString(string fileString){
+        string[] parts = fileString.Split("~|~");
+        return new Entry(parts[1], parts[2]){_date=parts[0]};
+    }
 }

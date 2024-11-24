@@ -7,6 +7,8 @@ class Program
         Journal journal = new Journal();
         PromptGenerator promptGenerator = new PromptGenerator();
         bool running = true;
+        string confirm;
+        string filename;
 
         while (running){
             Console.WriteLine("Please select one of the following choices:");
@@ -14,7 +16,8 @@ class Program
             Console.WriteLine("2. Display");
             Console.WriteLine("3. Load");
             Console.WriteLine("4. Save");
-            Console.WriteLine("5. Exit");
+            Console.WriteLine("5. Delete All");
+            Console.WriteLine("6. Exit");
             Console.Write("What would you like to do?: ");
 
             string choice = Console.ReadLine();
@@ -36,20 +39,36 @@ class Program
 
              else if ( choice == "3")
             {
+                Console.Write("What is the filename?:");
+                filename = Console.ReadLine();
+                journal.LoadFromFile(filename);
                 
             }
 
              else if ( choice == "4")
             {
                 Console.Write("What is the filename?: ");
-                    string filename = Console.ReadLine();
+                    filename = Console.ReadLine();
                     journal.SaveToFile(filename);
             }
+            else if (choice == "5")
+            {
+                Console.WriteLine("Are you sure you want to delete? (yes/no):");
+                confirm = Console.ReadLine().ToLower();
+                if (confirm == "yes")
+                {
+                    journal.DeleteAll();
+                }
+                else
+                {
+                    Console.WriteLine("Operation Aborted");
+                }
+            }
 
-              else if ( choice == "5")
+              else if ( choice == "6")
             {
                 Console.Write("Are you sure you want to exit? (yes/no): ");
-                    string confirm = Console.ReadLine().ToLower();
+                    confirm = Console.ReadLine().ToLower();
                     if (confirm == "yes")
                     {
                         running = false;
